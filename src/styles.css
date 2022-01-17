@@ -1,0 +1,68 @@
+.container {
+  text-align: center;
+  max-width: 800px;
+  font-family: Montserrat;
+}
+.location-bar {
+  margin-top: 0px;
+  max-width: 800px;
+}
+.weather-app {
+  border: 1px solid #eae3e3;
+  padding: 30px;
+  margin: 40px auto;
+  border-radius: 10px;
+  background-image: url(https://i.pinimg.com/originals/8d/ab/93/8dab93784b72fee5f88f8e4e760ba478.jpg);
+}
+h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 40px;
+  margin: 0px;
+  color: black;
+}
+.today-date-time {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  margin-left: 15px;
+  margin-top: 55px;
+}
+h3 {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  margin-left: 15px;
+  margin-top: 0px;
+}
+ul {
+  list-style: none;
+}
+h4 {
+  text-align: center;
+  font-size: 20px;
+}
+.today-weather-icon {
+  text-align: center;
+  font-size: 60px;
+}
+.today-temperature-info {
+  font-size: 20px;
+  font-weight: 800;
+}
+.today-weather-info {
+  font-size: 20px;
+  font-weight: 500;
+}
+.report {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-top: 45px;
+}
+.temp {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+}
