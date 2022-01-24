@@ -1,0 +1,51 @@
+html {
+  min-height: 100vh;
+}
+
+body {
+  background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+.main-card {
+  background: #adecf7;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(9, 9, 84, 0.2);
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.heading {
+  margin-top: 30px;
+}
+
+.celsius-button,
+.fahrenheit-button {
+  width: 45px;
+  background: rgba(252, 160, 2, 1);
+}
+
+.date {
+  margin-top: 10px;
+}
+
+.climate {
+  margin-top: 20px;
+}
+
+.forecast {
+  margin-bottom: 20px;
+}
+
+.forecast-card {
+  background: #d0e2e2;
+  border-radius: 10px;
+}
+
+.forecast-weather-icon {
+  width: 75px;
+}
+
+.github {
+  text-align: center;
+}

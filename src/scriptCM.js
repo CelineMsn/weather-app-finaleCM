@@ -1,5 +1,5 @@
 function showTemperature(response) {
-  celsiusTemp = response.data.main.temp;
+  let celsiusTemp = response.data.main.temp;
   let temperature = Math.round(celsiusTemp);
   let currentHumidity = response.data.main.humidity;
   let currentWind = response.data.wind.speed;
@@ -38,23 +38,41 @@ function current(event) {
 }
 navigator.geolocation.getCurrentPosition(showPosition);
 
-function currentTime() {
-  let now = new Date();
-  let currentDay = now.getDay();
-  let Days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = Days[currentDay];
-  let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
-  let currentHour = now.getHours();
-  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
-}
+//Date line 1
+let date = document.querySelector("ul li");
+const options = {
+  weekday: "long",
+  minute: "numeric",
+  hour: "numeric",
+};
+var formattedDate = new Intl.DateTimeFormat("eng-US", options).format(
+  new Date()
+);
+date.innerHTML = formattedDate;
+let now = new Date();
+
+//Date line 2
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+let month = months[now.getMonth()];
+let day = now.getDate();
+let year = now.getFullYear();
+
+let date2 = document.querySelector("h4");
+date2.innerHTML = `${month} ${day}, ${year}`;
+
 function convertFahrenheit(event) {
   event.addEventListener;
   celsius.classList.remove("active");
