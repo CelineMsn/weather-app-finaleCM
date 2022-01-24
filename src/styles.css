@@ -1,7 +1,14 @@
+body {
+  font-size: 20px;
+  font-family: Montserrat;
+}
+
 .container {
   text-align: center;
   max-width: 800px;
+  font-size: 20px;
   font-family: Montserrat;
+  margin-top: 20px;
 }
 .location-bar {
   margin-top: 0px;
@@ -12,11 +19,12 @@
   padding: 30px;
   margin: 40px auto;
   border-radius: 10px;
-  background-image: url(https://i.pinimg.com/originals/8d/ab/93/8dab93784b72fee5f88f8e4e760ba478.jpg);
+  background-image: url("../img/nuagessoleil.jpeg");
 }
 h1 {
   text-align: center;
   font-weight: 900;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 40px;
   margin: 0px;
   color: black;
@@ -24,7 +32,6 @@ h1 {
 .today-date-time {
   color: black;
   font-weight: 500;
-  font-size: 20px;
   margin-left: 15px;
   margin-top: 55px;
 }
@@ -65,4 +72,14 @@ h4 {
   color: black;
   font-weight: 500;
   font-size: 20px;
+}
+.weekdays {
+  border: 1px solid #eae3e3;
+  padding: 10px;
+  margin: 0px auto;
+  border-radius: 10px;
+  background-color: #f6f7fb;
+}
+.bottom {
+  font-size: 15px;
 }
