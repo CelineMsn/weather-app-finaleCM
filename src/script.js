@@ -55,6 +55,7 @@ function currentTime() {
   let currentHour = now.getHours();
   dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
 }
+
 function convertFahrenheit(event) {
   event.addEventListener;
   celsius.classList.remove("active");
