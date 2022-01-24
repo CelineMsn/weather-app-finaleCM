@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,8 +34,6 @@
     <title>Weather App FinaleCM</title>
     <!--lien mon fichier css = "link:css" = à mettre après bootstrap-->
     <link rel="stylesheet" href="src/styles.css" />
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <!--pour bootstraps il faut mettre tous le projet dans une class container -->
@@ -91,7 +90,9 @@
             <div class="col-4">
               <div class="today-weather-icon">⛈</div>
               <div class="col today-temperature-info">
-                <span class="temperature" id="temp"> <h2>19</h2></span>
+                <span class="temperature" id="temp">
+                  <h2>19</h2>
+                </span>
                 <span class="units">
                   <a id="c" href="#">°C </a> | <a id="f" href="#">°F</a>
                 </span>
