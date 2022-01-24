@@ -7,7 +7,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--importer le lien axios depuis internet (https://github.com/axios/axios) pour le .js necessaire pour utiliser les API de openweather-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,10 +30,10 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat+Alternates:wght@300&display=swap"
       rel="stylesheet"
     />
-    <!--Penser à renommer le fichier - pas indispenssable-->
-    <title>Weather App FinaleCM</title>
     <!--lien mon fichier css = "link:css" = à mettre après bootstrap-->
     <link rel="stylesheet" href="src/styles.css" />
+    <!--Penser à renommer le fichier - pas indispenssable-->
+    <title>Weather App FCM</title>
   </head>
   <body>
     <!--pour bootstraps il faut mettre tous le projet dans une class container -->
@@ -40,7 +41,7 @@
       <!--faire des classes séparées pour les différents blocs du design-->
       <div class="weather-app">
         <!--ligne 1: barre de recherche-->
-        <form class="search-form">
+        <form class="search-form" id="search-form">
           <div class="row">
             <div class="location-bar">
               <div class="row g-0">
@@ -50,15 +51,25 @@
                     id="search-bar"
                     class="form-control"
                     placeholder="Enter city"
+                    autofocus="on"
+                    autocomplete="off"
                   />
                 </div>
                 <div class="col-2" id="search">
-                  <button type="submit" class="btn btn-secondary">
+                  <button
+                    type="submit"
+                    class="btn btn-secondary"
+                    id="search-button"
+                  >
                     Search 🔎
                   </button>
                 </div>
                 <div class="col-2">
-                  <button type="submit" class="btn btn-secondary">
+                  <button
+                    type="submit"
+                    class="btn btn-secondary"
+                    id="here-button"
+                  >
                     Here 📍
                   </button>
                 </div>
@@ -68,53 +79,53 @@
         </form>
         <br />
         <!--ligne 2 = TITRE VILLE-->
-        <h1> id="city" </h1>
+        <h1 id="city">Vancouver</h1>
         <!--ligne 3-->
         <div class="row-middle">
           <div class="row g-0">
             <!--colone 1 jour et date-->
-            <div class="col-4">
-              <div>
-                <ul class="col today-date-time">
-                  <li>
-                    day
-                    <br />
-                    time
-                  </li>
-                  <h4>date1</h4>
-                </ul>
-              </div>
+            <div class="col-4" id="colonne1">
+              <ul class="today-date-time">
+                <li>
+                  day
+                  <br />
+                  time
+                </li>
+                <h4>date1</h4>
+              </ul>
             </div>
             <!--colonne 2 icone et température du jour-->
-            <div class="col-4">
+            <div class="col-4" id="colonne2">
               <div class="today-weather-icon">⛈</div>
-              <div class="col today-temperature-info">
+              <span class="today-temperature-info">
                 <span class="temperature" id="temp">
-                  <h2>19</h2>
+                  <h2><strong>19</strong></h2>
                 </span>
-                <span class="units">
-                  <a id="c" href="#">°C </a> | <a id="f" href="#">°F</a>
-                </span>
-                <div>Heavy Rain</div>
-              </div>
+                <div class="units">
+                  <small>
+                    <a id="c" href="#">°C </a> | <a id="f" href="#">°F</a>
+                  </small>
+                </div>
+                <div id="description">Heavy Rain</div>
+              </span>
             </div>
             <!--colone 3 humidité et vent-->
-            <div class="col-4">
+            <div class="col-4" id="colonne3">
               <div class="row report">
-                <div class="col today-weather-info">
+                <div class="today-weather-info">
                   <h3>
                     Humidity: 50%
                     <br />
-                    Wind: 2 km/k
+                    Wind: 2km/h
                     <br />
-                    Precipitation: 4 mm
+                    Precipitation: 4%
                   </h3>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr />
+        <br />
         <!--ligne 4 jours de la semaine-->
         <div class="weekdays">
           <div class="row temp">

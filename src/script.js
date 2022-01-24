@@ -1,41 +1,42 @@
-//search bar
-let form = document.querySelector("form");
-form.addEventListener("submit", SearchCity);
-
-function SearchCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#search-bar");
-  let city = document.querySelector("h1");
-  city.innerHTML = input.value;
-}
-//let myLocation = document.querySelector("myLocation");
-//myLocation.addEventListener("submit", findPosition);
-
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let citySearched = response.data.name;
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${citySearched}`;
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${temperature}`;
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
+  let currentHumidity = response.data.main.humidity;
+  let currentWind = response.data.wind.speed;
+  let currentIcon = document.querySelector("#icon");
+  let currentDescription = document.querySelector("#description");
+
+  cityName.innerHTML = `${searchName.value}`;
+  currentDescription.innerHTML = `${response.data.weather[0].description}`;
+  currentTemp.innerHTML = `${temperature}`;
+  hum.innerHTML = `${currentHumidity}`;
+  win.innerHTML = `${currentWind}`;
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
+}
+function showPosition(position) {
+  axios
+    .get(
+      `${apiUrl}lon=${position.coords.longitude}&lat=${position.coords.latitude}&appid=${apiKey}&units=metric`
+    )
+    .then(showTemperature);
 }
 
-let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
-let units = "metric";
-let city = "sydney";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+function search(event) {
+  event.preventDefault();
 
-function findPosition(position) {
-  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
-  let units = "metric";
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showWeather);
+  axios
+    .get(`${apiUrl}q=${searchName.value}&appid=${apiKey}&units=metric`)
+    .then(showTemperature);
 }
-
-navigator.geolocation.getCurrentPosition(findPosition);
-axios.get(apiUrl).then(findPosition).then(showTemperature);
+function current(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+navigator.geolocation.getCurrentPosition(showPosition);
 
 //Date line 1
 let date = document.querySelector("ul li");
@@ -71,23 +72,34 @@ let year = now.getFullYear();
 
 let date2 = document.querySelector("h4");
 date2.innerHTML = `${month} ${day}, ${year}`;
-
-// temperature
-
-function changingD(event) {
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = 66;
+function convertFahrenheit(event) {
+  event.addEventListener;
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+  currentTemp.innerHTML = `${fahrenheitTemp}`;
 }
-
-let fernaheint = document.querySelector("#f");
-fernaheint.addEventListener("click", changingD);
-
-function changeC(event) {
-  let temp = document.querySelector(".temperature");
-  temp.innerHTML = 19;
+function convertCelsius(event) {
+  event.addEventListener;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  currentTemp.innerHTML = `${Math.round(celsiusTemp)}`;
 }
+let cityName = document.querySelector("#city");
+let searchName = document.querySelector("#city-input");
+let hum = document.querySelector("#humidity");
+let win = document.querySelector("#wind");
+let searchCity = document.querySelector("#search-form");
+let currentCity = document.querySelector("#current-location-button");
+let celsiusTemp = null;
 
-let degree = document.querySelector("#c");
-degree.addEventListener("click", changeC);
+searchCity.addEventListener("submit", search);
+currentCity.addEventListener("click", current);
+fahrenheit.addEventListener("click", convertFahrenheit);
+celsius.addEventListener("click", convertCelsius);
+let dateTime = document.querySelector("#date");
+currentTime();
+let currentTemp = document.querySelector("#temperature");
 
-/// old CSS image https://www.desktopbackground.org/download/o/2013/11/16/671061_four-seasons-desktop_1680x1050_h.jpg
+let apiKey = "adb7ae5bb76c11b5c643833eb2dfec01";
+let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
