@@ -8,8 +8,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Penser à renommer le fichier - pas indispenssable-->
     <title>Weather App</title>
     <meta charset="UTF-8" />
+    <!--importer le lien axios depuis internet (https://github.com/axios/axios) pour le .js necessaire pour utiliser les API de openweather-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Zen+Kurenaido&display=swap"
@@ -21,17 +23,22 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat+Alternates:wght@300&display=swap"
       rel="stylesheet"
     />
+       <!--lien css bootstrap à copier depuis internet-->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+     <!--lien mon fichier css = "link:css" = à mettre après bootstrap-->
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
+    <!--pour bootstraps il faut mettre tous le projet dans une class container -->
     <div class="container">
+      <!--faire des classes séparées pour les différents blocs du design-->
       <div class="weather-app">
+         <!--ligne 1: barre de recherche-->
         <form class="search-form" id="search-form">
           <div class="row">
             <div class="col-8">
@@ -58,16 +65,18 @@
             </div>
           </div>
         </form>
+         <!--ligne 2 = TITRE VILLE-->
         <h1 id="city">Vancouver</h1>
-     
+     <!--ligne 3 date et heure-->
           <div class="date" id="date"></div>
-      
+      <!--ligne 4 colone 1 description du temps du jour-->
         <div class="row">
           <div class="col-4">
             <ul>
               <li id="description">Partly Cloudy</li>
             </ul>
           </div>
+              <!--ligne 4 colone 2 icone et température du jour-->
           <div class="col-4">
             <div class="clearfix">
               <img
@@ -85,6 +94,7 @@
               </div>
             </div>
           </div>
+              <!--ligne 4 colone 3 humidité et vent-->
           <div class="col-4">
             <ul>
               <li>Humidity: <span id="humidity">69</span>%</li>
@@ -92,7 +102,7 @@
           </div>
         </div>
         <br />
-              <!--ligne 4 jours de la semaine-->
+              <!--ligne 5 forecast semaine-->
         <div class="weekdays">
           <div class="row temp">
             <div class="col temp">
