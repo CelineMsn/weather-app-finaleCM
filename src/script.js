@@ -17,34 +17,47 @@ function currentTime() {
   let day = Days[currentDay];
   let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
   let currentHour = now.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
   dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
 }
 
 /* fonction forecast des autres jours de la semaine (ligne 5) */
-function showForecast() {
+function showForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
+
   let forecastHTML = `<div class="row">`;
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
         <div class="weekdays-forecast-date">
-        ${day}
+        ${formatDay(forecastDay.dt)}
         </div>
-        <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="36"/>
+        <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" alt="" width="36"/>
         <div class="weekdays-forecast-temp">
-            <span class="weekdays-forecast-temp-min">13°</span>
-            <span class="weekdays-forecast-temp-max">17°</span>  
+            <span class="weekdays-forecast-temp-min">${Math.round(
+              forecastDay.temp.min
+            )}°</span>
+            <span class="weekdays-forecast-temp-max">${Math.round(
+              forecastDay.temp.max
+            )}°</span>  
         </div>
       </div>
     `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 /* appel de la fonction forecast*/
-showForecast();
+/*showForecast();*/
 
 function showPosition(position) {
   axios
@@ -92,6 +105,8 @@ function showTemperature(response) {
 /* fonction de recherche de ville manuelle*/
 function search(event) {
   event.preventDefault();
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   axios
     .get(`${apiUrl}q=${searchName.value}&appid=${apiKey}&units=metric`)
     .then(showTemperature);
