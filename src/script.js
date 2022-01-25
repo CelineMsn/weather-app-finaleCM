@@ -53,6 +53,16 @@ function showPosition(position) {
     )
     .then(showTemperature);
 }
+function getForcast(coordinates) {
+  /* pour vérifier les details recus de l'API*/
+  /*console.log(coordinates);*/
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  /* appeler la nouvelle API*/
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  /*console.log(apiUrl);*/
+  /*appeler la fonction */
+  axios.get(apiUrl).then(showForecast);
+}
 
 /* fonction temperature et description (vent et humidité) actuelle ville recherchée*/
 function showTemperature(response) {
@@ -73,6 +83,10 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
+  /* pour voir tous les details recus de l'API*/
+  console.log(response.data);
+
+  getForcast(response.data.coord);
 }
 
 /* fonction de recherche de ville manuelle*/
