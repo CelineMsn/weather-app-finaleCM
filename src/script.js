@@ -17,6 +17,32 @@ function showTemperature(response) {
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
+
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <div class="weekdays-forecast-date">
+        ${day}
+        </div>
+        <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="36"/>
+        <div class="weekdays-forecast-temp">
+            <span class="weekdays-forecast-temp-min">13°</span>
+            <span class="weekdays-forecast-temp-max">17°</span>  
+        </div>
+      </div>
+      `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+showForecast();
+
 function showPosition(position) {
   axios
     .get(
@@ -32,6 +58,7 @@ function search(event) {
     .get(`${apiUrl}q=${searchName.value}&appid=${apiKey}&units=metric`)
     .then(showTemperature);
 }
+
 function current(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
