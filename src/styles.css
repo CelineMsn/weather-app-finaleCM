@@ -73,7 +73,7 @@ li {
   margin-bottom: 20px;
 }
 
-.weekdays {
+.weekdays-forecast {
   border: 1px solid #eae3e3;
   text-align: center;
   padding: 10px;
@@ -81,6 +81,19 @@ li {
   border-radius: 10px;
   background-color: #f6f7fb;
 }
+.weekdays-forecast-date {
+  opacity: 1;
+  font-size: 16px;
+}
+.weekdays-forecast-temp-max {
+  opacity: 1;
+  font-size: 14px;
+}
+.weekdays-forecast-temp-min {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
 .bottom {
   max-width: 800px;
   display: block;
