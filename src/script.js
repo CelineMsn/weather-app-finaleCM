@@ -1,17 +1,6 @@
 /*Comments in javascript */
 /* */
 
-function getForecast(coordinates) {
-  /* pour vérifier les details recus de l'API*/
-  /*console.log(coordinates);*/
-  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
-  /* appeler la nouvelle API*/
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  /*console.log(apiUrl);*/
-  /*appeler la fonction */
-  axios.get(apiUrl).then(displayForecast);
-}
-
 /* fonction temperature et description (vent et humidité) actuelle ville recherchée*/
 function showTemperature(response) {
   currentTime();
@@ -82,12 +71,12 @@ function currentTime() {
   let day = Days[currentDay];
   let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
   let currentHour = now.getHours();
-  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
+  dateTime.innerHTML = `${day}  ${currentHour}:${currentMinute}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   return days[day];
 }
 
@@ -95,9 +84,8 @@ function formatDay(timestamp) {
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
@@ -117,7 +105,7 @@ function displayForecast(response) {
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperatures-max"> ${Math.round(
                   forecastDay.temp.max
-                )}°</span>
+                )}° |</span>
                 <span class="weather-forecast-temperatures-min"> ${Math.round(
                   forecastDay.temp.min
                 )}°</span>
@@ -130,9 +118,22 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
+/*<br /> 
+<span class="min-max"> max | min </span>*/
 /* appel de la fonction forecast*/
 /*showForecast();*/
 
+function getForecast(coordinates) {
+  /* pour vérifier les details recus de l'API*/
+  /*console.log(coordinates);*/
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  /* appeler la nouvelle API*/
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  /*console.log(apiUrl);*/
+  /*appeler la fonction */
+  axios.get(apiUrl).then(displayForecast);
+}
 /*attention aux adresses images http qui sont insécures */
 
 /* fonction transform unités de température*/

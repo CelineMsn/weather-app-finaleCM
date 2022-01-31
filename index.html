@@ -41,10 +41,17 @@
          <!--ligne 1: barre de recherche-->
         <form class="search-form" id="search-form">
           <div class="row">
+             <div class="col-2">
+              <input
+                type="submit"
+                value="🔎  Search"
+                class="btn btn-secondary"
+              />
+              </div>
             <div class="col-8">
               <input
                 type="search"
-                placeholder="Enter city"
+                placeholder="Enter city ..."
                 autofocus="on"
                 autocomplete="off"
                 id="city-input"
@@ -52,24 +59,15 @@
               />
             </div>
             <div class="col-2">
-              <input
-                type="submit"
-                value="Search 🔎"
-                class="btn btn-secondary"
-              />
-            </div>
-            <div class="col-2">
               <button class="btn btn-secondary" id="current-location-button">
-                Current
+                Here 📍
               </button>
             </div>
           </div>
         </form>
          <!--ligne 2 = TITRE VILLE-->
         <h1 id="city">Vancouver</h1>
-     <!--ligne 3 date et heure-->
-          
-      <!--ligne 4 colone 1 description du temps du jour-->
+      <!--ligne 3 colone 1 description du temps du jour-->
         <div class="row">
           <div class="col-4">
             <ul>
@@ -77,8 +75,8 @@
               <li id="description">Partly Cloudy</li>
             </ul>
           </div>
-              <!--ligne 4 colone 2 icone et température du jour-->
-          <div class="col-4" class="middle-colone">
+      <!--ligne 3 colone 2 icone et température du jour-->
+          <div class="col-4" class="middle-c">
              <img
                 src="http://openweathermap.org/img/wn/04d@2x.png"
                 id="icon"
@@ -94,21 +92,21 @@
                 >
               </div>
           </div>
-              <!--ligne 4 colone 3 humidité et vent-->
+      <!--ligne 3 colone 3 humidité et vent-->
           <div class="col-4">
             <ul>
-              <li>Humidity: <span id="humidity">69</span>%</li>
-              <li>Wind: <span id="wind">5</span>km/h</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span>km/h</li>
           </div>
         </div>
         <br />
-              <!--ligne 5 forecast semaine-->
-              <!--remarque: les class servent à targetter depuis CSS et les id sont plus simples dans javascript-->
+      <!--ligne 4 forecast semaine-->
+      <!--remarque: les class servent à targetter depuis CSS et les id sont plus simples dans javascript-->
         <div class="weekdays-forecast" id="forecast">
         </div>
       </div>
         <div class="bottom">
-          <!--penser à mettre un lien avec code source et nom en petit en bas-->
+      <!--penser à mettre un lien avec code source et nom en petit en bas-->
           <small class="text-muted">Last updated 1 min ago</small>
           <footer>
             <a
