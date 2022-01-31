@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  color: white;
+  color: whitesmoke;
   text-transform: uppercase;
   font-size: 40px;
   font-weight: 800;
@@ -21,7 +21,7 @@ ul {
 }
 
 li {
-  color: white;
+  color: whitesmoke;
   text-align: center;
   font-size: 20px;
   font-weight: 100;
@@ -32,7 +32,7 @@ li {
   margin: 20px auto;
 }
 .date {
-  color: white;
+  color: whitesmoke;
   text-align: center;
   font-size: 20px;
   font-weight: 300;
@@ -43,13 +43,13 @@ li {
 }
 
 .weather-app {
-  border: 1px solid #dadde1;
+  border: 1px solid whitesmoke;
   padding: 15px;
   margin: 20px auto;
   border-radius: 10px;
   max-width: 800px;
   margin-bottom: 0px;
-  background: linear-gradient(to top, #31d8d8 0%, #250853 100%);
+  background: linear-gradient(to top, #31d8d8 0%, #200a53 100%);
   text-align: center;
 }
 
@@ -67,7 +67,7 @@ li {
 }
 
 .units {
-  color: white;
+  color: whitesmoke;
   position: relative;
   top: -34px;
 }
@@ -77,16 +77,19 @@ li {
 }
 
 .weekdays-forecast {
-  border: 1px solid #eae3e3;
+  border: 3px solid whitesmoke;
   text-align: center;
+  font-weight: bold;
   padding: 10px;
   margin: 0px auto;
   border-radius: 10px;
-  background-color: #f6f7fb;
+  background: linear-gradient(to top, #31d8d8 100%, #200a53 0%);
 }
 .weekdays-forecast-date {
   opacity: 1;
+  font-weight: bolder;
   font-size: 16px;
+  color: black;
 }
 .weekdays-forecast-temp-max {
   opacity: 1;
@@ -106,7 +109,7 @@ li {
 }
 .active {
   color: white;
-  cursor: default;
+  cursor: grabbing;
 }
 
 .active:hover {
