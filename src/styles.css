@@ -49,7 +49,7 @@ li {
   border-radius: 10px;
   max-width: 800px;
   margin-bottom: 0px;
-  background: linear-gradient(to top, #31d8d8 0%, #200a53 100%);
+  background: linear-gradient(to top, #2bcece 15%, #200a53 100%);
   text-align: center;
 }
 
@@ -83,7 +83,7 @@ li {
   padding: 10px;
   margin: 0px auto;
   border-radius: 10px;
-  background: linear-gradient(to top, #31d8d8 100%, #200a53 0%);
+  background: #2bcece;
 }
 .weekdays-forecast-date {
   opacity: 1;
