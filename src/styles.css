@@ -29,6 +29,7 @@ li {
   line-height: 1;
   list-style: none;
   text-transform: capitalize;
+  margin: 20px auto;
 }
 .date {
   color: white;
@@ -40,6 +41,7 @@ li {
   text-transform: capitalize;
   margin: 20px auto;
 }
+
 .weather-app {
   border: 1px solid #dadde1;
   padding: 15px;
@@ -48,6 +50,7 @@ li {
   max-width: 800px;
   margin-bottom: 0px;
   background: linear-gradient(to top, #31d8d8 0%, #250853 100%);
+  text-align: center;
 }
 
 .weather-icon {

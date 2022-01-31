@@ -68,31 +68,31 @@
          <!--ligne 2 = TITRE VILLE-->
         <h1 id="city">Vancouver</h1>
      <!--ligne 3 date et heure-->
-          <div class="date" id="date"></div>
+          
       <!--ligne 4 colone 1 description du temps du jour-->
         <div class="row">
           <div class="col-4">
             <ul>
+              <li class="date" id="date"></li>
               <li id="description">Partly Cloudy</li>
             </ul>
           </div>
               <!--ligne 4 colone 2 icone et température du jour-->
-          <div class="col-4">
-            <div class="clearfix">
-              <img
+          <div class="col-4" class="middle-colone">
+             <img
                 src="http://openweathermap.org/img/wn/04d@2x.png"
                 id="icon"
                 alt="Cloudy icon"
-                class="weather-icon float-left"
+                class="weather-icon"
               />
-              <div class="float-left">
-                <span class="temperature" id="temperature">3</span>
+              <br />
+              <div class="current-temp">
+                <span class="temperature" id="temperature"></span>
                 <span class="units"
                   ><a href="#" id="celsius" class="active">°C </a>|
                   <a href="#" id="fahrenheit">°F</a></span
                 >
               </div>
-            </div>
           </div>
               <!--ligne 4 colone 3 humidité et vent-->
           <div class="col-4">
