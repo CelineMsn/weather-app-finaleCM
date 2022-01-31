@@ -34,6 +34,32 @@ function currentTime() {
   dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
 }
 
+/* fonction temperature et description (vent et humidité) actuelle ville recherchée*/
+function showTemperature(response) {
+  currentTime();
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
+  let currentHumidity = response.data.main.humidity;
+  let currentWind = response.data.wind.speed;
+  let currentIcon = document.querySelector("#icon");
+  let currentDescription = document.querySelector("#description");
+
+  cityName.innerHTML = `${searchName.value}`;
+  currentDescription.innerHTML = `${response.data.weather[0].description}`;
+  currentTemp.innerHTML = `${temperature}`;
+  hum.innerHTML = `${currentHumidity}`;
+  win.innerHTML = `${currentWind}`;
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
+  /* pour voir tous les details recus de l'API*/
+  /*console.log(response.data)*/
+
+  getForcast(response.data.coord);
+}
+
 /* fonction forecast des autres jours de la semaine (ligne 5) */
 function showForecast(response) {
   let forecast = response.data.daily;
@@ -85,31 +111,6 @@ function showPosition(position) {
       `${apiUrl}lon=${position.coords.longitude}&lat=${position.coords.latitude}&appid=${apiKey}&units=metric`
     )
     .then(showTemperature);
-}
-
-/* fonction temperature et description (vent et humidité) actuelle ville recherchée*/
-function showTemperature(response) {
-  celsiusTemp = response.data.main.temp;
-  let temperature = Math.round(celsiusTemp);
-  let currentHumidity = response.data.main.humidity;
-  let currentWind = response.data.wind.speed;
-  let currentIcon = document.querySelector("#icon");
-  let currentDescription = document.querySelector("#description");
-
-  cityName.innerHTML = `${searchName.value}`;
-  currentDescription.innerHTML = `${response.data.weather[0].description}`;
-  currentTemp.innerHTML = `${temperature}`;
-  hum.innerHTML = `${currentHumidity}`;
-  win.innerHTML = `${currentWind}`;
-  currentIcon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  currentIcon.setAttribute("alt", response.data.weather[0].description);
-  /* pour voir tous les details recus de l'API*/
-  /*console.log(response.data)*/
-
-  getForcast(response.data.coord);
 }
 
 /* fonction de recherche de ville manuelle*/
