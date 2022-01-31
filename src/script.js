@@ -80,14 +80,32 @@ function currentTime() {
     "Friday",
     "Saturday",
   ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+  let day = now.getDate();
+  let year = now.getFullYear();
   let day = Days[currentDay];
   let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
   let currentHour = now.getHours();
   if (currentHour < 10) {
     currentHour = `0${currentHour}`;
   }
-  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
+  dateTime.innerHTML = `${month} ${day}, ${year} ${currentHour}:${currentMinute}`;
 }
+
 //Date line 1
 let date = document.querySelector("ul li");
 const options = {
