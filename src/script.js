@@ -56,8 +56,37 @@ function showTemperature(response) {
   currentIcon.setAttribute("alt", response.data.weather[0].description);
   /* pour voir tous les details recus de l'API*/
   /*console.log(response.data)*/
-
   getForcast(response.data.coord);
+}
+
+function showPosition(position) {
+  axios
+    .get(
+      `${apiUrl}lon=${position.coords.longitude}&lat=${position.coords.latitude}&appid=${apiKey}&units=metric`
+    )
+    .then(showTemperature);
+}
+
+/* fonction de recherche de ville manuelle*/
+function search(event) {
+  event.preventDefault();
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+  axios
+    .get(`${apiUrl}q=${searchName.value}&appid=${apiKey}&units=metric`)
+    .then(showTemperature);
+}
+
+/* fonction de recherche localisation actuelle*/
+function current(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function searchCityName(city) {
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
 }
 
 /* fonction forecast des autres jours de la semaine (ligne 5) */
@@ -104,31 +133,6 @@ function formatDay(timestamp) {
 }
 
 /*attention aux adresses images http qui sont insécures */
-
-function showPosition(position) {
-  axios
-    .get(
-      `${apiUrl}lon=${position.coords.longitude}&lat=${position.coords.latitude}&appid=${apiKey}&units=metric`
-    )
-    .then(showTemperature);
-}
-
-/* fonction de recherche de ville manuelle*/
-function search(event) {
-  event.preventDefault();
-  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
-  axios
-    .get(`${apiUrl}q=${searchName.value}&appid=${apiKey}&units=metric`)
-    .then(showTemperature);
-}
-
-/* fonction de recherche localisation actuelle*/
-function current(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-navigator.geolocation.getCurrentPosition(showPosition);
 
 /* fonction transform unités de température*/
 /* fonction transform C° en F°*/
