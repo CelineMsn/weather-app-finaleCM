@@ -80,7 +80,13 @@ function currentTime() {
     "Friday",
     "Saturday",
   ];
-  let months = [
+  let day = Days[currentDay];
+  let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
+  let currentHour = now.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  /*let months = [
     "January",
     "February",
     "March",
@@ -95,14 +101,9 @@ function currentTime() {
     "December",
   ];
   let month = months[now.getMonth()];
-  let day = now.getDate();
   let year = now.getFullYear();
-  let day = Days[currentDay];
-  let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
-  let currentHour = now.getHours();
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
-  }
+ 
+  */
   dateTime.innerHTML = `${month} ${day}, ${year} ${currentHour}:${currentMinute}`;
 }
 
@@ -119,35 +120,19 @@ var formattedDate = new Intl.DateTimeFormat("eng-US", options).format(
 date.innerHTML = formattedDate;
 let now = new Date();
 
-//Date line 2
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-let day = now.getDate();
-let year = now.getFullYear();
-
-let date2 = document.querySelector("h4");
-date2.innerHTML = `${month} ${day}, ${year}`;
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
 /* fonction forecast des autres jours de la semaine (ligne 5) */
 function showForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
@@ -176,13 +161,6 @@ function showForecast(response) {
 }
 /* appel de la fonction forecast*/
 /*showForecast();*/
-
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[day];
-}
 
 /*attention aux adresses images http qui sont insécures */
 
