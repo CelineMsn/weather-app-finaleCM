@@ -1,4 +1,11 @@
-function showTemperature(response) {
+function getForecast(coordinates) {
+  let apiKey = "b7a70af5fdae9ceec59f16b65fdfdf72";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+
+
+unction showTemperature(response) {
   let celsiusTemp = response.data.main.temp;
   let temperature = Math.round(celsiusTemp);
   let currentHumidity = response.data.main.humidity;
@@ -72,6 +79,7 @@ let year = now.getFullYear();
 
 let date2 = document.querySelector("h4");
 date2.innerHTML = `${month} ${day}, ${year}`;
+
 
 function convertFahrenheit(event) {
   event.addEventListener;
