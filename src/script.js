@@ -12,28 +12,6 @@ function getForcast(coordinates) {
   axios.get(apiUrl).then(showForecast);
 }
 
-/* fonction date actuelle */
-function currentTime() {
-  let now = new Date();
-  let currentDay = now.getDay();
-  let Days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = Days[currentDay];
-  let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
-  let currentHour = now.getHours();
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
-  }
-  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
-}
-
 /* fonction temperature et description (vent et humidité) actuelle ville recherchée*/
 function showTemperature(response) {
   currentTime();
@@ -88,6 +66,62 @@ function searchCityName(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
+
+/* fonction date actuelle */
+function currentTime() {
+  let now = new Date();
+  let currentDay = now.getDay();
+  let Days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = Days[currentDay];
+  let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
+  let currentHour = now.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
+}
+//Date line 1
+let date = document.querySelector("ul li");
+const options = {
+  weekday: "long",
+  minute: "numeric",
+  hour: "numeric",
+};
+var formattedDate = new Intl.DateTimeFormat("eng-US", options).format(
+  new Date()
+);
+date.innerHTML = formattedDate;
+let now = new Date();
+
+//Date line 2
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+let month = months[now.getMonth()];
+let day = now.getDate();
+let year = now.getFullYear();
+
+let date2 = document.querySelector("h4");
+date2.innerHTML = `${month} ${day}, ${year}`;
 
 /* fonction forecast des autres jours de la semaine (ligne 5) */
 function showForecast(response) {
